@@ -117,15 +117,32 @@ body {
     font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 2px; text-align: center;
     transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Super Fast Organic Ripple */
+.ripple {
+    position: absolute;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: stylish-ripple 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+}
+
+@keyframes stylish-ripple {
+    to { transform: scale(3); opacity: 0; }
 }
 
 .home-glass-btn:hover {
-    background: rgba(56, 189, 248, 0.15); 
     border-color: #38bdf8;
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    background: rgba(56, 189, 248, 0.05);
 }
 
-/* Chapter Selection & Progress Bubble FIX */
+/* Chapter Selection & Progress Bubble */
 .chapter {
     display: flex; justify-content: space-between; align-items: center;
     width: 100%; margin: 12px 0; padding: 18px 20px;
@@ -142,7 +159,6 @@ body {
     overflow: hidden; z-index: 1;
 }
 
-/* সবুজ ফিক্সড লাইন বা ব্যাকগ্রাউন্ড ফিল */
 .prog-bubble::before {
     content: ""; position: absolute; top: 0; left: 0; height: 100%;
     width: var(--p-width, 0%); background: rgba(16, 185, 129, 0.7);
@@ -155,8 +171,8 @@ body {
     font-size: 12px; font-weight: bold; cursor: pointer; display: none; z-index: 999;
 }
 
-.screen { display: none; padding: 40px 20px; max-width: 520px; margin: auto; animation: slideUp 0.5s ease-out; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.screen { display: none; padding: 40px 20px; max-width: 520px; margin: auto; animation: slideUp 0.3s ease-out; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 .active { display: block; }
 
 .video-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #059669, #10b981); text-align: center; }
@@ -192,8 +208,8 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
 
     <div id="home" class="screen active">    
         <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase; margin-bottom: 25px;">Physics Courses</h3>    
-        <button class="home-glass-btn" onclick="openSection('boards')">Boards Exam</button>    
-        <button class="home-glass-btn" onclick="openSection('jee')">JEE / NEET Entrance</button>    
+        <button class="home-glass-btn" onclick="handleButtonClick(event, 'boards')">Boards Exam</button>    
+        <button class="home-glass-btn" onclick="handleButtonClick(event, 'jee')">JEE / NEET Entrance</button>    
     </div>  
 
     <div id="sectionScreen" class="screen">    
@@ -261,6 +277,24 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             semi:{title:"Semiconductors",videos:[]}
         };
 
+        // Super Fast Navigation (200ms)
+        function handleButtonClick(event, section) {
+            const button = event.currentTarget;
+            const ripple = document.createElement("span");
+            const rect = button.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${event.clientX - rect.left}px`;
+            ripple.style.top = `${event.clientY - rect.top}px`;
+            ripple.classList.add("ripple");
+            button.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+                openSection(section);
+            }, 200); // Super fast transition
+        }
+
         function openLink(url) { window.open(url, '_blank').focus(); }
 
         function openSection(sec){
@@ -278,7 +312,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
                     let val = 0;
                     if(currentSection === "boards") { val = progressData[key] || 0; }
                     el.innerText = val + "%";
-                    el.style.setProperty('--p-width', val + '%'); // এটি সবুজ ফিল আপডেট করবে
+                    el.style.setProperty('--p-width', val + '%');
                 }
             });
         }
@@ -288,7 +322,6 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             document.getElementById("chapterScreen").classList.add("active");
             document.getElementById("chapterTitle").innerText=data[ch].title;
             let container=document.getElementById("videoButtons"); container.innerHTML="";
-
             if(currentSection==="boards" && ch==="electro") {
                 data[ch].videos.forEach((v,i)=>{
                     container.innerHTML+=`<button class="video-btn" onclick="playVideo(${i})">${data[ch].title} - Part ${i+1}</button>`;
@@ -313,7 +346,6 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             playerDiv.classList.add("active");
             videoFrame.src = data[currentChapter].videos[i];
             document.getElementById("videoTitle").innerText = data[currentChapter].title;
-
             if (videoFrame.requestFullscreen) { videoFrame.requestFullscreen(); }
             else if (videoFrame.webkitRequestFullscreen) { videoFrame.webkitRequestFullscreen(); }
         }

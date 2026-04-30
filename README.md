@@ -71,13 +71,12 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Logo Pulsing Animation (ছোট-বড় হওয়া) */
+/* Logo Pulsing Animation */
 .logo-circle { 
     width: 70px; height: 70px; border-radius: 50%; 
     margin: 0 auto; display: block; object-fit: cover; 
     border: 2px solid rgba(56, 189, 248, 0.6);
     box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); 
-    /* অ্যানিমেশন যোগ করা হলো */
     animation: logoPulse 3s infinite ease-in-out;
 }
 
@@ -167,15 +166,38 @@ body {
 
 iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border: 1px solid rgba(56, 189, 248, 0.3); }
 
-.tabs { display: flex; gap: 10px; margin-bottom: 20px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 16px; }
-.tab-btn { flex: 1; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; }
-.tab-btn.active { background: #38bdf8; color: #020617; font-weight: bold; }
-
-.floating { position: fixed; right: 20px; bottom: 30px; display: none; flex-direction: column; gap: 15px; z-index: 50; }
-.floating div { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); }
+/* --- Floating Social Buttons Style --- */
+.floating { 
+    position: fixed; 
+    right: 20px; 
+    bottom: 30px; 
+    display: none; 
+    flex-direction: column; 
+    gap: 15px; 
+    z-index: 1001; 
+}
+.floating div { 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    font-size: 24px; 
+    cursor: pointer; 
+    border: 1px solid rgba(255,255,255,0.2); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+.floating div:hover { transform: scale(1.1); }
 .whatsapp-btn { background: #25D366; }
 .instagram-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 .facebook-btn { background: #1877F2; }
+
+.tabs { display: flex; gap: 10px; margin-bottom: 20px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 16px; }
+.tab-btn { flex: 1; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; }
+.tab-btn.active { background: #38bdf8; color: #020617; font-weight: bold; }
 
 </style>  
 </head>  
@@ -231,6 +253,12 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
         <iframe id="videoFrame" frameborder="0" allowfullscreen allow="autoplay; fullscreen"></iframe>    
     </div>  
 
+    <div id="socialLinks" class="floating">    
+        <div onclick="openLink('https://chat.whatsapp.com/F8nP43r3h7y3dobqk7qTI3')" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></div>    
+        <div onclick="openLink('https://www.instagram.com/edufinity_abhijit')" class="instagram-btn"><i class="fab fa-instagram"></i></div>    
+        <div onclick="openLink('https://www.facebook.com/share/1P6JqRg8JE/')" class="facebook-btn"><i class="fab fa-facebook-f"></i></div>    
+    </div>  
+
     <script>    
         let currentChapter=""; let historyStack=[]; let currentSection="";
         let progressData = JSON.parse(localStorage.getItem('eduProg')) || {};
@@ -244,7 +272,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             nuclei:{title:"Nuclei",videos:[]}, semi:{title:"Semiconductors",videos:[]}
         };
 
-        // Parallax
+        // Parallax Logic
         document.addEventListener('mousemove', (e) => {
             const bg = document.getElementById('parallaxBg');
             const x = (window.innerWidth / 2 - e.pageX) / 35;
@@ -345,7 +373,10 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
         window.onload=()=>{
             setTimeout(()=>{
                 document.getElementById("splash").style.opacity = "0";
-                setTimeout(() => { document.getElementById("splash").style.display = "none"; }, 600);
+                setTimeout(() => { 
+                    document.getElementById("splash").style.display = "none"; 
+                    document.getElementById("socialLinks").style.display = "flex"; // সোশ্যাল বাটন শো করা হলো
+                }, 600);
             }, 1500);
         };
     </script>  

@@ -43,7 +43,6 @@ body {
     transition: 0.6s ease;
 }
 
-/* Splash Logo Glow Restored */
 #splash img {
     width: 160px;
     border-radius: 20px;
@@ -56,25 +55,37 @@ body {
     50% { transform: scale(1.05); opacity: 0.9; }
 }
 
-/* --- Rounded Glass Floating Header --- */
+/* --- Rounded Glass Floating Sticky Header --- */
 .header {
     text-align: center;
     padding: 25px 20px;
     position: sticky; 
-    top: 15px; /* স্ক্রিনের মাথা থেকে একটু গ্যাপ */
-    margin: 0 15px 20px; /* চারিদিকে গ্যাপ দিয়ে ভাসমান করা হলো */
+    top: 15px; 
+    margin: 0 15px 20px;
     z-index: 500;
-    
-    /* গ্লাস ডিজাইন */
     background: rgba(255, 255, 255, 0.05); 
     backdrop-filter: blur(15px) saturate(180%);
     -webkit-backdrop-filter: blur(15px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.2); /* চারিদিকের বর্ডার */
-    border-radius: 30px; /* চারিধার কাটা রাউন্ড */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Heading Glow Restored */
+/* Logo Pulsing Animation (ছোট-বড় হওয়া) */
+.logo-circle { 
+    width: 70px; height: 70px; border-radius: 50%; 
+    margin: 0 auto; display: block; object-fit: cover; 
+    border: 2px solid rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); 
+    /* অ্যানিমেশন যোগ করা হলো */
+    animation: logoPulse 3s infinite ease-in-out;
+}
+
+@keyframes logoPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.4)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.8)); }
+}
+
 .header h1 {
     margin: 10px 0 0;
     font-family: 'Orbitron', sans-serif;
@@ -98,13 +109,6 @@ body {
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-}
-
-.logo-circle { 
-    width: 70px; height: 70px; border-radius: 50%; 
-    margin: 0 auto; display: block; object-fit: cover; 
-    border: 2px solid rgba(56, 189, 248, 0.6);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); 
 }
 
 /* Home Buttons */
@@ -227,12 +231,6 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
         <iframe id="videoFrame" frameborder="0" allowfullscreen allow="autoplay; fullscreen"></iframe>    
     </div>  
 
-    <div id="socialLinks" class="floating">    
-        <div onclick="openLink('https://chat.whatsapp.com/F8nP43r3h7y3dobqk7qTI3')" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></div>    
-        <div onclick="openLink('https://www.instagram.com/edufinity_abhijit')" class="instagram-btn"><i class="fab fa-instagram"></i></div>    
-        <div onclick="openLink('https://www.facebook.com/share/1P6JqRg8JE/')" class="facebook-btn"><i class="fab fa-facebook-f"></i></div>    
-    </div>  
-
     <script>    
         let currentChapter=""; let historyStack=[]; let currentSection="";
         let progressData = JSON.parse(localStorage.getItem('eduProg')) || {};
@@ -347,7 +345,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
         window.onload=()=>{
             setTimeout(()=>{
                 document.getElementById("splash").style.opacity = "0";
-                setTimeout(() => { document.getElementById("splash").style.display = "none"; document.getElementById("socialLinks").style.display = "flex"; }, 600);
+                setTimeout(() => { document.getElementById("splash").style.display = "none"; }, 600);
             }, 1500);
         };
     </script>  

@@ -190,7 +190,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
     </div>  
 
     <div id="home" class="screen active">    
-        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase; margin-bottom: 25px;">📚 Physics Courses</h3>    
+        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase; margin-bottom: 25px;">Physics Courses</h3>    
         <button class="home-glass-btn" onclick="handleButtonClick(event, 'boards')">Boards Exam</button>    
         <button class="home-glass-btn" onclick="handleButtonClick(event, 'jee')">JEE / NEET Entrance</button>    
     </div>  

@@ -50,13 +50,23 @@ body::after {
 #splash img {
     width: 160px;
     border-radius: 20px;
-    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.1)); 
+    /* লোগোর চারপাশে হালকা নীল আভা (Blue Glow) */
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
     animation: quantumPulse 2s infinite ease-in-out;
 }
 
+/* আভাটি লোগোর সাথে যাতে পালস করে তার জন্য আপডেট করা হলো */
 @keyframes quantumPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.9; }
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 1; 
+        filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+    }
+    50% { 
+        transform: scale(1.05); 
+        opacity: 0.9; 
+        filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.8));
+    }
 }
 
 .header {
@@ -193,7 +203,6 @@ iframe {
     font-weight: bold;
 }
 
-/* --- Floating Button Update Starts --- */
 .floating {
     position: fixed;
     right: 20px;
@@ -227,7 +236,6 @@ iframe {
 .whatsapp-btn { background: #25D366; }
 .instagram-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 .facebook-btn { background: #1877F2; }
-/* --- Floating Button Update Ends --- */
 
 </style>  
 </head>  

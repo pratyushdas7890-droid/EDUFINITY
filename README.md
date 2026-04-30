@@ -84,185 +84,82 @@ body::after {
     text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
 }
 
-@keyframes glowText {
-    to { background-position: 200% center; }
-}
+@keyframes glowText { to { background-position: 200% center; } }
 
-.header .tagline {
-    margin-top: 10px;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 14px;
-    color: #38bdf8;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-.logo-circle {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    display: block;
-    object-fit: cover;
-    border: 2px solid #38bdf8;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-}
+.logo-circle { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 15px; display: block; object-fit: cover; border: 2px solid #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
 
 .top-back {
-    position: absolute;
-    left: 15px;
-    top: 25px;
-    background: rgba(239, 68, 68, 0.9);
-    padding: 8px 16px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    display: none;
-    z-index: 999;
+    position: absolute; left: 15px; top: 25px;
+    background: rgba(239, 68, 68, 0.9); padding: 8px 16px; border-radius: 12px;
+    font-size: 12px; font-weight: bold; cursor: pointer; display: none; z-index: 999;
 }
 
-.screen {
-    display: none;
-    padding: 30px 20px;
-    max-width: 520px;
-    margin: auto;
-    animation: slideUp 0.5s ease-out;
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+.screen { display: none; padding: 30px 20px; max-width: 520px; margin: auto; animation: slideUp 0.5s ease-out; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .active { display: block; }
 
-button {
-    width: 100%;
-    margin: 12px 0;
-    padding: 18px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    border-radius: 18px;
-    cursor: pointer;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.3s;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(5px);
-}
-
-.home-heading {
-    text-align: center;
-    color: #38bdf8;
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 25px;
-}
-
-.home-glass-btn {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-}
-
-.chapter { background: linear-gradient(135deg, #1e40af, #1d4ed8); }
-.video { background: linear-gradient(135deg, #059669, #10b981); }
-.notes { background: linear-gradient(135deg, #d97706, #f59e0b); }
-
-/* --- Progress Bar Styles --- */
-.progress-container {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 15px;
-    margin-bottom: 25px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.progress-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    margin-bottom: 10px;
-    color: #38bdf8;
-    font-weight: 600;
-}
-
-.progress-bar-bg {
-    width: 100%;
-    height: 14px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+/* Chapter Button (Name Left, Progress Right) */
+.chapter {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; margin: 12px 0; padding: 18px 20px;
+    border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 18px;
+    cursor: pointer; color: white; font-size: 15px; font-weight: 600;
+    transition: 0.3s; background: linear-gradient(135deg, #1e40af, #1d4ed8);
+    text-align: left;
+    position: relative;
     overflow: hidden;
+}
+
+/* Updated Progress Bubble Style */
+.prog-bubble {
+    position: relative;
+    width: 55px; /* ফিক্সড উইথ যাতে দেখতে একরকম লাগে */
+    background: rgba(0, 0, 0, 0.4); 
+    padding: 4px 0; 
+    border-radius: 8px;
+    font-size: 11px; 
+    color: #fff; 
     border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.progress-fill {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #38bdf8, #818cf8);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
-    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    background: rgba(255,255,255,0.05);
-    padding: 5px;
-    border-radius: 16px;
-}
-
-.tab-btn {
-    flex: 1;
-    padding: 12px;
-    border-radius: 12px;
     text-align: center;
-    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
 }
 
+/* সবুজ ব্যাকগ্রাউন্ড যা পার্সেন্টেজ অনুযায়ী বাড়বে */
+.prog-bubble::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: var(--p-width, 0%); /* ভ্যারিয়েবল দিয়ে কন্ট্রোল হবে */
+    background: rgba(16, 185, 129, 0.6); /* হালকা সবুজ আভা */
+    transition: width 0.5s ease;
+    z-index: -1;
+}
+
+/* Video & Notes Original Buttons (Centered) */
+.video-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #059669, #10b981); text-align: center; }
+.notes-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #d97706, #f59e0b); text-align: center; }
+
+/* Glass Home Buttons */
+.home-glass-btn {
+    width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer;
+    background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15); color: #fff;
+    font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.2px; text-align: center;
+}
+
+button:hover { box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); transform: translateY(-2px); }
+
+iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+.tabs { display: flex; gap: 10px; margin-bottom: 20px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 16px; }
+.tab-btn { flex: 1; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; }
 .tab-btn.active { background: #38bdf8; color: #020617; font-weight: bold; }
 
-.floating {
-    position: fixed;
-    right: 20px;
-    bottom: 30px;
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 50;
-}
-
-.floating div {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: 0.3s;
-}
-
+.floating { position: fixed; right: 20px; bottom: 30px; display: none; flex-direction: column; gap: 15px; z-index: 50; }
+.floating div { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); }
 .whatsapp-btn { background: #25D366; }
 .instagram-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 .facebook-btn { background: #1877F2; }
@@ -277,45 +174,33 @@ button {
         <div class="top-back" onclick="goBack()">Back</div>    
         <img src="https://i.ibb.co/3YPtmZMM/Screenshot.png" class="logo-circle">   
         <h1>EDUFINITY</h1>     
-        <div class="tagline">চলো এবার Physics কে Feel করা যাক</div>    
     </div>  
 
     <div id="home" class="screen active">    
-        <h3 class="home-heading">Physics Courses</h3>    
+        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase;">📚 Physics Courses</h3>    
         <button class="home-glass-btn" onclick="openSection('boards')">Boards Exam</button>    
         <button class="home-glass-btn" onclick="openSection('jee')">JEE / NEET Entrance</button>    
     </div>  
 
     <div id="sectionScreen" class="screen">    
         <h3 id="sectionTitle" style="text-align:center; color:#38bdf8; text-transform:uppercase;"></h3>  
-        <div id="chapterButtons">
-            <button class="chapter" onclick="openChapter('electro')">Electrostatics</button>  
-            <button class="chapter" onclick="openChapter('potential')">Electrostatic Potential</button>  
-            <button class="chapter" onclick="openChapter('current')">Current Electricity</button>  
-            <button class="chapter" onclick="openChapter('magnetism')">Magnetism</button>  
-            <button class="chapter" onclick="openChapter('emi')">Electromagnetic Induction</button>  
-            <button class="chapter" onclick="openChapter('ac')">Alternating Current</button>  
-            <button class="chapter" onclick="openChapter('optics')">Optics</button>  
-            <button class="chapter" onclick="openChapter('dual')">Dual Nature</button>  
-            <button class="chapter" onclick="openChapter('atoms')">Atoms</button>  
-            <button class="chapter" onclick="openChapter('nuclei')">Nuclei</button>  
-            <button class="chapter" onclick="openChapter('semi')">Semiconductors</button>
+        <div id="chapterContainer">
+            <button class="chapter" onclick="openChapter('electro')"><span>Electrostatics</span> <div class="prog-bubble" id="electro-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('potential')"><span>Electrostatic Potential</span> <div class="prog-bubble" id="potential-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('current')"><span>Current Electricity</span> <div class="prog-bubble" id="current-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('magnetism')"><span>Magnetism</span> <div class="prog-bubble" id="magnetism-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('emi')"><span>Electromagnetic Induction</span> <div class="prog-bubble" id="emi-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('ac')"><span>Alternating Current</span> <div class="prog-bubble" id="ac-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('optics')"><span>Optics</span> <div class="prog-bubble" id="optics-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('dual')"><span>Dual Nature</span> <div class="prog-bubble" id="dual-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('atoms')"><span>Atoms</span> <div class="prog-bubble" id="atoms-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('nuclei')"><span>Nuclei</span> <div class="prog-bubble" id="nuclei-prog">0%</div></button>  
+            <button class="chapter" onclick="openChapter('semi')"><span>Semiconductors</span> <div class="prog-bubble" id="semi-prog">0%</div></button>
         </div>
     </div>  
 
     <div id="chapterScreen" class="screen">    
-        <h3 id="chapterTitle" style="color:#38bdf8; margin-bottom:10px;"></h3>
-        
-        <div class="progress-container">
-            <div class="progress-info">
-                <span>Learning Progress</span>
-                <span id="progressText">0% Completed</span>
-            </div>
-            <div class="progress-bar-bg">
-                <div id="progressBarFill" class="progress-fill"></div>
-            </div>
-        </div>
-
+        <h3 id="chapterTitle" style="color:#38bdf8; text-align:center;"></h3>    
         <div class="tabs">    
             <div class="tab-btn active" onclick="showTab('lecture')">Lecture</div>    
             <div class="tab-btn" onclick="showTab('notes')">Notes</div>    
@@ -324,28 +209,24 @@ button {
             <div id="videoButtons"></div>    
         </div>    
         <div id="notesTab" style="display:none;">    
-            <button class="notes" onclick="openPDF()">📄 Download PDF Notes</button>    
+            <button class="notes-btn" onclick="openPDF()">📄 Download PDF Notes</button>    
         </div>  
     </div>  
 
     <div id="player" class="screen">    
-        <h3 id="videoTitle"></h3>    
+        <h3 id="videoTitle" style="text-align:center;"></h3>    
         <iframe id="videoFrame" frameborder="0" allowfullscreen allow="autoplay; fullscreen"></iframe>    
     </div>  
 
     <div id="socialLinks" class="floating">    
-        <div onclick="openLink('https://www.instagram.com/edufinity_abhijit')" class="instagram-btn"><i class="fab fa-instagram"></i></div>    
         <div onclick="openLink('https://chat.whatsapp.com/F8nP43r3h7y3dobqk7qTI3')" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></div>    
+        <div onclick="openLink('https://www.instagram.com/edufinity_abhijit')" class="instagram-btn"><i class="fab fa-instagram"></i></div>    
         <div onclick="openLink('https://www.facebook.com/share/1P6JqRg8JE/')" class="facebook-btn"><i class="fab fa-facebook-f"></i></div>    
     </div>  
 
     <script>    
-        let currentChapter="";
-        let historyStack=[];
-        let currentSection="";
-        
-        // Tracking watched videos (Simulated storage)
-        let watchedData = JSON.parse(localStorage.getItem('eduWatched')) || {};
+        let currentChapter=""; let historyStack=[]; let currentSection="";
+        let progressData = JSON.parse(localStorage.getItem('eduProg')) || {};
 
         let data={
             electro:{ title:"Electrostatics", videos:[
@@ -369,79 +250,56 @@ button {
         function openLink(url) { window.open(url, '_blank').focus(); }
 
         function openSection(sec){
-            currentSection=sec;
-            historyStack.push("home");
-            hideAll();
+            currentSection=sec; historyStack.push("home"); hideAll();
             document.getElementById("sectionScreen").classList.add("active");
             document.querySelector(".top-back").style.display="block";
             document.getElementById("sectionTitle").innerText=sec;
+            refreshProgUI();
         }
 
-        function updateProgress(ch){
-            let total = data[ch].videos.length;
-            if(total === 0) {
-                document.getElementById("progressBarFill").style.width = "0%";
-                document.getElementById("progressText").innerText = "No Lectures Yet";
-                return;
-            }
-            let watchedCount = watchedData[ch] ? watchedData[ch].length : 0;
-            let percent = Math.round((watchedCount / total) * 100);
-            document.getElementById("progressBarFill").style.width = percent + "%";
-            document.getElementById("progressText").innerText = percent + "% Completed";
+        // Updated Function to handle visual fill
+        function refreshProgUI(){
+            Object.keys(data).forEach(key => {
+                let el = document.getElementById(key + "-prog");
+                if(el) {
+                    let val = progressData[key] || 0;
+                    el.innerText = val + "%";
+                    el.style.setProperty('--p-width', val + '%'); // ব্যাকগ্রাউন্ড ফিল আপডেট
+                }
+            });
         }
 
         function openChapter(ch){
-            currentChapter=ch;
-            historyStack.push("section");
-            hideAll();
+            currentChapter=ch; historyStack.push("section"); hideAll();
             document.getElementById("chapterScreen").classList.add("active");
             document.getElementById("chapterTitle").innerText=data[ch].title;
-            
-            updateProgress(ch);
-
-            let container=document.getElementById("videoButtons");
-            container.innerHTML="";
-
-            if(currentSection==="jee"){
-                container.innerHTML=`<div style="text-align:center; padding:20px; opacity:0.8;">
-                <h3>📘 Coming Soon</h3><p>Study material is under preparation</p></div>`;    
-                return;    
+            let container=document.getElementById("videoButtons"); container.innerHTML="";
+            if(currentSection==="jee" && data[ch].videos.length === 0){
+                container.innerHTML=`<div style="text-align:center; padding:20px; opacity:0.8;"><h3>📘 Coming Soon</h3></div>`; return;    
             }    
-            
             data[ch].videos.forEach((v,i)=>{
-                let isWatched = watchedData[ch] && watchedData[ch].includes(i);
-                let btnStyle = isWatched ? "opacity: 0.7; border-left: 5px solid #10b981;" : "";
-                container.innerHTML+=`<button class="video" style="${btnStyle}" onclick="playVideo(${i})">
-                ${isWatched ? '✅ ' : ''}${data[ch].title} - Part ${i+1}</button>`;
+                container.innerHTML+=`<button class="video-btn" onclick="playVideo(${i})">${data[ch].title} - Part ${i+1}</button>`;
             });
         }
 
         function playVideo(i){
-            // Mark as watched
-            if(!watchedData[currentChapter]) watchedData[currentChapter] = [];
-            if(!watchedData[currentChapter].includes(i)) {
-                watchedData[currentChapter].push(i);
-                localStorage.setItem('eduWatched', JSON.stringify(watchedData));
+            let total = data[currentChapter].videos.length;
+            let current = (progressData[currentChapter] || 0);
+            if(current < 100) {
+                progressData[currentChapter] = Math.min(100, current + Math.round(100/total));
+                localStorage.setItem('eduProg', JSON.stringify(progressData));
             }
-
-            historyStack.push("chapter");
-            hideAll();
-            let playerScreen = document.getElementById("player");
-            let videoFrame = document.getElementById("videoFrame");
-            
-            playerScreen.classList.add("active");
-            videoFrame.src = data[currentChapter].videos[i];
+            historyStack.push("chapter"); hideAll();
+            document.getElementById("player").classList.add("active");
+            document.getElementById("videoFrame").src = data[currentChapter].videos[i];
             document.getElementById("videoTitle").innerText = data[currentChapter].title;
-
-            if (videoFrame.requestFullscreen) videoFrame.requestFullscreen();
-            else if (videoFrame.webkitRequestFullscreen) videoFrame.webkitRequestFullscreen();
         }
 
         function showTab(tab){
             document.getElementById("lectureTab").style.display = tab==="lecture"?"block":"none";
             document.getElementById("notesTab").style.display = tab==="notes"?"block":"none";
             document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
-            event.target.classList.add("active");
+            event.currentTarget.classList.add("active");
         }
 
         function openPDF(){ window.open("YOUR_PDF_LINK","_blank"); }
@@ -449,28 +307,18 @@ button {
         function goBack(){
             if (document.fullscreenElement) document.exitFullscreen();
             document.getElementById("videoFrame").src="";
-            let last=historyStack.pop();
-            hideAll();
-
-            if(last==="chapter") {
-                document.getElementById("chapterScreen").classList.add("active");
-                openChapter(currentChapter); // Refresh progress and checkmarks
-            }
-            else if(last==="section") document.getElementById("sectionScreen").classList.add("active");
-            else {
-                document.getElementById("home").classList.add("active");
-                document.querySelector(".top-back").style.display="none";
-            }
+            let last=historyStack.pop(); hideAll();
+            if(last==="chapter") document.getElementById("chapterScreen").classList.add("active");
+            else if(last==="section") { document.getElementById("sectionScreen").classList.add("active"); refreshProgUI(); }
+            else { document.getElementById("home").classList.add("active"); document.querySelector(".top-back").style.display="none"; }
         }
 
         function hideAll(){ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active")); }
 
         window.onload=()=>{
             setTimeout(()=>{
-                let splash = document.getElementById("splash");
-                let social = document.getElementById("socialLinks");
-                splash.style.opacity = "0";
-                setTimeout(() => { splash.style.display = "none"; social.style.display = "flex"; }, 600);
+                document.getElementById("splash").style.opacity = "0";
+                setTimeout(() => { document.getElementById("splash").style.display = "none"; document.getElementById("socialLinks").style.display = "flex"; }, 600);
             }, 1500);
         };
     </script>  

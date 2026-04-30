@@ -2,7 +2,7 @@
 <head>    
 <meta charset="UTF-8">    
 <title>EDUFINITY - Class 12 Physics</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&family=Exo+2:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&family=Exo+2:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>    
@@ -50,12 +50,10 @@ body::after {
 #splash img {
     width: 160px;
     border-radius: 20px;
-    /* লোগোর চারপাশে হালকা নীল আভা (Blue Glow) */
     filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
     animation: quantumPulse 2s infinite ease-in-out;
 }
 
-/* আভাটি লোগোর সাথে যাতে পালস করে তার জন্য আপডেট করা হলো */
 @keyframes quantumPulse {
     0%, 100% { 
         transform: scale(1); 
@@ -163,12 +161,45 @@ button {
     backdrop-filter: blur(5px);
 }
 
+/* --- Home Heading Font Update --- */
+.home-heading {
+    text-align: center;
+    color: #38bdf8;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+/* --- Realme UI 7 Glass Effect with Improved Font --- */
+.home-glass-btn {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    color: #fff;
+    /* বাটন ফন্ট আপডেট */
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.home-glass-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+}
+
 .chapter { background: linear-gradient(135deg, #1e40af, #1d4ed8); }
 .video { background: linear-gradient(135deg, #059669, #10b981); }
 .notes { background: linear-gradient(135deg, #d97706, #f59e0b); }
 
 button:hover {
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
     transform: translateY(-2px);
 }
 
@@ -253,9 +284,9 @@ iframe {
     </div>  
 
     <div id="home" class="screen active">    
-        <h3 style="text-align:center; color:#38bdf8;">📚 Physics Courses</h3>    
-        <button class="chapter" onclick="openSection('boards')">Boards Exam</button>    
-        <button class="chapter" onclick="openSection('jee')">JEE / NEET Entrance</button>    
+        <h3 class="home-heading">📚 Physics Courses</h3>    
+        <button class="home-glass-btn" onclick="openSection('boards')">Boards Exam</button>    
+        <button class="home-glass-btn" onclick="openSection('jee')">JEE / NEET Entrance</button>    
     </div>  
 
     <div id="sectionScreen" class="screen">    

@@ -55,16 +55,8 @@ body::after {
 }
 
 @keyframes quantumPulse {
-    0%, 100% { 
-        transform: scale(1); 
-        opacity: 1; 
-        filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
-    }
-    50% { 
-        transform: scale(1.05); 
-        opacity: 0.9; 
-        filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.8));
-    }
+    0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4)); }
+    50% { transform: scale(1.05); opacity: 0.9; filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.8)); }
 }
 
 .header {
@@ -161,7 +153,6 @@ button {
     backdrop-filter: blur(5px);
 }
 
-/* --- Home Heading Font Update --- */
 .home-heading {
     text-align: center;
     color: #38bdf8;
@@ -173,7 +164,6 @@ button {
     margin-bottom: 25px;
 }
 
-/* --- Realme UI 7 Glass Effect with Improved Font --- */
 .home-glass-btn {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
@@ -181,7 +171,6 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     color: #fff;
-    /* বাটন ফন্ট আপডেট */
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
     font-weight: 600;
@@ -189,32 +178,50 @@ button {
     letter-spacing: 1.2px;
 }
 
-.home-glass-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(56, 189, 248, 0.5);
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
-}
-
 .chapter { background: linear-gradient(135deg, #1e40af, #1d4ed8); }
 .video { background: linear-gradient(135deg, #059669, #10b981); }
 .notes { background: linear-gradient(135deg, #d97706, #f59e0b); }
 
-button:hover {
-    transform: translateY(-2px);
+/* --- Progress Bar Styles --- */
+.progress-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    backdrop-filter: blur(10px);
 }
 
-iframe {
-    width:100%;
-    height:230px;
-    border-radius:18px;
-    margin-top: 15px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 14px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tabs {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     background: rgba(255,255,255,0.05);
     padding: 5px;
     border-radius: 16px;
@@ -228,11 +235,7 @@ iframe {
     cursor: pointer;
 }
 
-.tab-btn.active {
-    background: #38bdf8;
-    color: #020617;
-    font-weight: bold;
-}
+.tab-btn.active { background: #38bdf8; color: #020617; font-weight: bold; }
 
 .floating {
     position: fixed;
@@ -260,10 +263,6 @@ iframe {
     transition: 0.3s;
 }
 
-.floating div:hover {
-    transform: scale(1.1);
-}
-
 .whatsapp-btn { background: #25D366; }
 .instagram-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 .facebook-btn { background: #1877F2; }
@@ -272,9 +271,7 @@ iframe {
 </head>  
 
 <body>  
-    <div id="splash">
-        <img src="https://i.ibb.co/MkP5N4DZ/logo.jpg">
-    </div>  
+    <div id="splash"><img src="https://i.ibb.co/MkP5N4DZ/logo.jpg"></div>  
 
     <div class="header">    
         <div class="top-back" onclick="goBack()">Back</div>    
@@ -284,28 +281,41 @@ iframe {
     </div>  
 
     <div id="home" class="screen active">    
-        <h3 class="home-heading">📚 Physics Courses</h3>    
+        <h3 class="home-heading">Physics Courses</h3>    
         <button class="home-glass-btn" onclick="openSection('boards')">Boards Exam</button>    
         <button class="home-glass-btn" onclick="openSection('jee')">JEE / NEET Entrance</button>    
     </div>  
 
     <div id="sectionScreen" class="screen">    
         <h3 id="sectionTitle" style="text-align:center; color:#38bdf8; text-transform:uppercase;"></h3>  
-        <button class="chapter" onclick="openChapter('electro')">Electrostatics</button>  
-        <button class="chapter" onclick="openChapter('potential')">Electrostatic Potential</button>  
-        <button class="chapter" onclick="openChapter('current')">Current Electricity</button>  
-        <button class="chapter" onclick="openChapter('magnetism')">Magnetism</button>  
-        <button class="chapter" onclick="openChapter('emi')">Electromagnetic Induction</button>  
-        <button class="chapter" onclick="openChapter('ac')">Alternating Current</button>  
-        <button class="chapter" onclick="openChapter('optics')">Optics</button>  
-        <button class="chapter" onclick="openChapter('dual')">Dual Nature</button>  
-        <button class="chapter" onclick="openChapter('atoms')">Atoms</button>  
-        <button class="chapter" onclick="openChapter('nuclei')">Nuclei</button>  
-        <button class="chapter" onclick="openChapter('semi')">Semiconductors</button>  
+        <div id="chapterButtons">
+            <button class="chapter" onclick="openChapter('electro')">Electrostatics</button>  
+            <button class="chapter" onclick="openChapter('potential')">Electrostatic Potential</button>  
+            <button class="chapter" onclick="openChapter('current')">Current Electricity</button>  
+            <button class="chapter" onclick="openChapter('magnetism')">Magnetism</button>  
+            <button class="chapter" onclick="openChapter('emi')">Electromagnetic Induction</button>  
+            <button class="chapter" onclick="openChapter('ac')">Alternating Current</button>  
+            <button class="chapter" onclick="openChapter('optics')">Optics</button>  
+            <button class="chapter" onclick="openChapter('dual')">Dual Nature</button>  
+            <button class="chapter" onclick="openChapter('atoms')">Atoms</button>  
+            <button class="chapter" onclick="openChapter('nuclei')">Nuclei</button>  
+            <button class="chapter" onclick="openChapter('semi')">Semiconductors</button>
+        </div>
     </div>  
 
     <div id="chapterScreen" class="screen">    
-        <h3 id="chapterTitle" style="color:#38bdf8;"></h3>    
+        <h3 id="chapterTitle" style="color:#38bdf8; margin-bottom:10px;"></h3>
+        
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>Learning Progress</span>
+                <span id="progressText">0% Completed</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div id="progressBarFill" class="progress-fill"></div>
+            </div>
+        </div>
+
         <div class="tabs">    
             <div class="tab-btn active" onclick="showTab('lecture')">Lecture</div>    
             <div class="tab-btn" onclick="showTab('notes')">Notes</div>    
@@ -333,17 +343,17 @@ iframe {
         let currentChapter="";
         let historyStack=[];
         let currentSection="";
+        
+        // Tracking watched videos (Simulated storage)
+        let watchedData = JSON.parse(localStorage.getItem('eduWatched')) || {};
 
         let data={
-            electro:{
-                title:"Electrostatics",
-                videos:[
-                    "https://www.youtube.com/embed/GI5f4-8GbOs?autoplay=1",
-                    "https://www.youtube.com/embed/o4wpmE32ab4?autoplay=1",
-                    "https://www.youtube.com/embed/2zVKF4t78MQ?autoplay=1",
-                    "https://www.youtube.com/embed/qC2b-u4IXX0?autoplay=1"
-                ]
-            },
+            electro:{ title:"Electrostatics", videos:[
+                "https://www.youtube.com/embed/GI5f4-8GbOs?autoplay=1",
+                "https://www.youtube.com/embed/o4wpmE32ab4?autoplay=1",
+                "https://www.youtube.com/embed/2zVKF4t78MQ?autoplay=1",
+                "https://www.youtube.com/embed/qC2b-u4IXX0?autoplay=1"
+            ]},
             potential:{title:"Electrostatic Potential",videos:[]},
             current:{title:"Current Electricity",videos:[]},
             magnetism:{title:"Magnetism",videos:[]},
@@ -356,9 +366,7 @@ iframe {
             semi:{title:"Semiconductors",videos:[]}
         };
 
-        function openLink(url) {
-            window.open(url, '_blank').focus();
-        }
+        function openLink(url) { window.open(url, '_blank').focus(); }
 
         function openSection(sec){
             currentSection=sec;
@@ -369,30 +377,53 @@ iframe {
             document.getElementById("sectionTitle").innerText=sec;
         }
 
+        function updateProgress(ch){
+            let total = data[ch].videos.length;
+            if(total === 0) {
+                document.getElementById("progressBarFill").style.width = "0%";
+                document.getElementById("progressText").innerText = "No Lectures Yet";
+                return;
+            }
+            let watchedCount = watchedData[ch] ? watchedData[ch].length : 0;
+            let percent = Math.round((watchedCount / total) * 100);
+            document.getElementById("progressBarFill").style.width = percent + "%";
+            document.getElementById("progressText").innerText = percent + "% Completed";
+        }
+
         function openChapter(ch){
             currentChapter=ch;
             historyStack.push("section");
             hideAll();
             document.getElementById("chapterScreen").classList.add("active");
             document.getElementById("chapterTitle").innerText=data[ch].title;
+            
+            updateProgress(ch);
 
             let container=document.getElementById("videoButtons");
             container.innerHTML="";
 
             if(currentSection==="jee"){
                 container.innerHTML=`<div style="text-align:center; padding:20px; opacity:0.8;">
-                <h3>📘 Coming Soon</h3>    
-                <p>Study material is under preparation</p>    
-                </div>`;    
+                <h3>📘 Coming Soon</h3><p>Study material is under preparation</p></div>`;    
                 return;    
             }    
             
             data[ch].videos.forEach((v,i)=>{
-                container.innerHTML+=`<button class="video" onclick="playVideo(${i})">${data[ch].title} - Part ${i+1}</button>`;
+                let isWatched = watchedData[ch] && watchedData[ch].includes(i);
+                let btnStyle = isWatched ? "opacity: 0.7; border-left: 5px solid #10b981;" : "";
+                container.innerHTML+=`<button class="video" style="${btnStyle}" onclick="playVideo(${i})">
+                ${isWatched ? '✅ ' : ''}${data[ch].title} - Part ${i+1}</button>`;
             });
         }
 
         function playVideo(i){
+            // Mark as watched
+            if(!watchedData[currentChapter]) watchedData[currentChapter] = [];
+            if(!watchedData[currentChapter].includes(i)) {
+                watchedData[currentChapter].push(i);
+                localStorage.setItem('eduWatched', JSON.stringify(watchedData));
+            }
+
             historyStack.push("chapter");
             hideAll();
             let playerScreen = document.getElementById("player");
@@ -402,36 +433,29 @@ iframe {
             videoFrame.src = data[currentChapter].videos[i];
             document.getElementById("videoTitle").innerText = data[currentChapter].title;
 
-            if (videoFrame.requestFullscreen) {
-                videoFrame.requestFullscreen();
-            } else if (videoFrame.webkitRequestFullscreen) {
-                videoFrame.webkitRequestFullscreen();
-            } else if (videoFrame.msRequestFullscreen) {
-                videoFrame.msRequestFullscreen();
-            }
+            if (videoFrame.requestFullscreen) videoFrame.requestFullscreen();
+            else if (videoFrame.webkitRequestFullscreen) videoFrame.webkitRequestFullscreen();
         }
 
         function showTab(tab){
             document.getElementById("lectureTab").style.display = tab==="lecture"?"block":"none";
             document.getElementById("notesTab").style.display = tab==="notes"?"block":"none";
-            
             document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
             event.target.classList.add("active");
         }
 
-        function openPDF(){
-            window.open("YOUR_PDF_LINK","_blank");
-        }
+        function openPDF(){ window.open("YOUR_PDF_LINK","_blank"); }
 
         function goBack(){
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            }
+            if (document.fullscreenElement) document.exitFullscreen();
             document.getElementById("videoFrame").src="";
             let last=historyStack.pop();
             hideAll();
 
-            if(last==="chapter") document.getElementById("chapterScreen").classList.add("active");
+            if(last==="chapter") {
+                document.getElementById("chapterScreen").classList.add("active");
+                openChapter(currentChapter); // Refresh progress and checkmarks
+            }
             else if(last==="section") document.getElementById("sectionScreen").classList.add("active");
             else {
                 document.getElementById("home").classList.add("active");
@@ -439,21 +463,14 @@ iframe {
             }
         }
 
-        function hideAll(){
-            document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-        }
+        function hideAll(){ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active")); }
 
         window.onload=()=>{
             setTimeout(()=>{
                 let splash = document.getElementById("splash");
                 let social = document.getElementById("socialLinks");
-                
                 splash.style.opacity = "0";
-                
-                setTimeout(() => {
-                    splash.style.display = "none";
-                    social.style.display = "flex";
-                }, 600);
+                setTimeout(() => { splash.style.display = "none"; social.style.display = "flex"; }, 600);
             }, 1500);
         };
     </script>  

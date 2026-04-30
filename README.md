@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
 }
 
-/* Cinemaic Galaxy Background Effect */
+/* Cinematic Galaxy Background Effect */
 .galaxy-bg {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -30,12 +30,12 @@ body {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
-    background: rgba(2, 6, 23, 0.4); /* ওভারলে কিছুটা কমানো হলো স্বচ্ছতা বাড়াতে */
+    background: rgba(2, 6, 23, 0.4);
 }
 
 @keyframes galaxyZoom {
     0% { transform: scale(1); }
-    100% { transform: scale(1.2); }
+    100% { transform: scale(1.1); }
 }
 
 #splash {
@@ -59,23 +59,25 @@ body {
     50% { transform: scale(1.05); opacity: 0.9; filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.8)); }
 }
 
+/* Pure Transparent Curved Header */
 .header {
     text-align: center;
-    padding: 30px 10px;
+    padding: 20px 10px;
     position: sticky;
-    top: 0;
-    background: rgba(2, 6, 23, 0.8);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+    top: 10px;
+    margin: 0 10px;
     z-index: 100;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
 }
 
 .header h1 {
-    margin: 0;
+    margin: 5px 0 0;
     font-family: 'Orbitron', sans-serif;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 900;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     background: linear-gradient(90deg, #fff, #38bdf8, #818cf8, #fff);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -84,59 +86,33 @@ body {
 }
 
 .header .tagline {
-    margin-top: 10px;
+    margin-top: 5px;
     font-family: 'Exo 2', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     color: #38bdf8;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 @keyframes glowText { to { background-position: 200% center; } }
 
-.logo-circle { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 15px; display: block; object-fit: cover; border: 2px solid #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
-
-.top-back {
-    position: absolute; left: 15px; top: 25px;
-    background: rgba(239, 68, 68, 0.9); padding: 8px 16px; border-radius: 12px;
-    font-size: 12px; font-weight: bold; cursor: pointer; display: none; z-index: 999;
+.logo-circle { 
+    width: 70px; 
+    height: 70px; 
+    border-radius: 50%; 
+    margin: 0 auto; 
+    display: block; 
+    object-fit: cover; 
+    border: 2px solid #38bdf8; 
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); 
 }
 
-.screen { display: none; padding: 30px 20px; max-width: 520px; margin: auto; animation: slideUp 0.5s ease-out; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.active { display: block; }
-
-/* Chapter Selection Style */
-.chapter {
-    display: flex; justify-content: space-between; align-items: center;
-    width: 100%; margin: 12px 0; padding: 18px 20px;
-    border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 18px;
-    cursor: pointer; color: white; font-size: 15px; font-weight: 600;
-    transition: 0.3s; background: linear-gradient(135deg, #1e40af, #1d4ed8);
-    text-align: left; position: relative; overflow: hidden;
-}
-
-.prog-bubble {
-    position: relative; width: 55px; background: rgba(0, 0, 0, 0.4); 
-    padding: 4px 0; border-radius: 8px; font-size: 11px; color: #fff; 
-    border: 1px solid rgba(255, 255, 255, 0.1); text-align: center;
-    overflow: hidden; z-index: 1;
-}
-
-.prog-bubble::before {
-    content: ""; position: absolute; top: 0; left: 0; height: 100%;
-    width: var(--p-width, 0%); background: rgba(16, 185, 129, 0.7);
-    transition: width 0.5s ease; z-index: -1;
-}
-
-/* Home Page Pure Transparent Buttons (No Blur) */
+/* Home Buttons Styling */
 .home-glass-btn {
     width: 100%; margin: 15px 0; padding: 20px; border-radius: 20px; cursor: pointer;
-    background: transparent; /* ব্যাকগ্রাউন্ড সম্পূর্ণ সচ্ছ */
-    backdrop-filter: none; /* ব্লার সরিয়ে দেওয়া হলো */
-    -webkit-backdrop-filter: none;
-    border: 1.5px solid rgba(255, 255, 255, 0.6); /* বর্ডার আরেকটু স্পষ্ট করা হলো */
+    background: transparent; 
+    border: 2px solid rgba(255, 255, 255, 0.6); 
     color: #fff;
     font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 2px; text-align: center;
@@ -144,11 +120,44 @@ body {
 }
 
 .home-glass-btn:hover {
-    background: rgba(56, 189, 248, 0.15); /* হোভার করলে হালকা নীল আভা */
+    background: rgba(56, 189, 248, 0.15); 
     border-color: #38bdf8;
     box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
-    transform: scale(1.02);
 }
+
+/* Chapter Selection & Progress Bubble FIX */
+.chapter {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; margin: 12px 0; padding: 18px 20px;
+    border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 18px;
+    cursor: pointer; color: white; font-size: 15px; font-weight: 600;
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+    text-align: left; position: relative; overflow: hidden;
+}
+
+.prog-bubble {
+    position: relative; width: 55px; background: rgba(0, 0, 0, 0.4); 
+    padding: 4px 0; border-radius: 8px; font-size: 11px; color: #fff; 
+    border: 1px solid rgba(255, 255, 255, 0.2); text-align: center;
+    overflow: hidden; z-index: 1;
+}
+
+/* সবুজ ফিক্সড লাইন বা ব্যাকগ্রাউন্ড ফিল */
+.prog-bubble::before {
+    content: ""; position: absolute; top: 0; left: 0; height: 100%;
+    width: var(--p-width, 0%); background: rgba(16, 185, 129, 0.7);
+    transition: width 0.5s ease-in-out; z-index: -1;
+}
+
+.top-back {
+    position: absolute; left: 15px; top: 15px;
+    background: rgba(239, 68, 68, 0.9); padding: 8px 16px; border-radius: 12px;
+    font-size: 12px; font-weight: bold; cursor: pointer; display: none; z-index: 999;
+}
+
+.screen { display: none; padding: 40px 20px; max-width: 520px; margin: auto; animation: slideUp 0.5s ease-out; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.active { display: block; }
 
 .video-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #059669, #10b981); text-align: center; }
 .notes-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #d97706, #f59e0b); text-align: center; }
@@ -182,7 +191,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
     </div>  
 
     <div id="home" class="screen active">    
-        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase; margin-bottom: 25px;">📚 Physics Courses</h3>    
+        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase; margin-bottom: 25px;">Physics Courses</h3>    
         <button class="home-glass-btn" onclick="openSection('boards')">Boards Exam</button>    
         <button class="home-glass-btn" onclick="openSection('jee')">JEE / NEET Entrance</button>    
     </div>  
@@ -267,11 +276,9 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
                 let el = document.getElementById(key + "-prog");
                 if(el) {
                     let val = 0;
-                    if(currentSection === "boards") {
-                        val = progressData[key] || 0;
-                    }
+                    if(currentSection === "boards") { val = progressData[key] || 0; }
                     el.innerText = val + "%";
-                    el.style.setProperty('--p-width', val + '%');
+                    el.style.setProperty('--p-width', val + '%'); // এটি সবুজ ফিল আপডেট করবে
                 }
             });
         }

@@ -16,14 +16,15 @@ body {
     min-height: 100vh;
 }
 
-/* Cinematic Galaxy Background Effect */
+/* Cinematic Galaxy Background with Parallax */
 .galaxy-bg {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: -10%; left: -10%; width: 120%; height: 120%;
     z-index: -2;
     background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2022&auto=format&fit=crop') no-repeat center center;
     background-size: cover;
-    animation: galaxyZoom 40s linear infinite alternate;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
 }
 
 .overlay {
@@ -31,11 +32,6 @@ body {
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
     background: rgba(2, 6, 23, 0.4);
-}
-
-@keyframes galaxyZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
 }
 
 #splash {
@@ -47,37 +43,44 @@ body {
     transition: 0.6s ease;
 }
 
+/* Splash Logo Glow Restored */
 #splash img {
     width: 160px;
     border-radius: 20px;
-    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+    filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.7));
     animation: quantumPulse 2s infinite ease-in-out;
 }
 
 @keyframes quantumPulse {
-    0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4)); }
-    50% { transform: scale(1.05); opacity: 0.9; filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.8)); }
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
 }
 
-/* Pure Transparent Curved Header */
+/* --- Rounded Glass Floating Header --- */
 .header {
     text-align: center;
-    padding: 20px 10px;
-    position: sticky;
-    top: 10px;
-    margin: 0 10px;
-    z-index: 100;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-radius: 25px;
+    padding: 25px 20px;
+    position: sticky; 
+    top: 15px; /* স্ক্রিনের মাথা থেকে একটু গ্যাপ */
+    margin: 0 15px 20px; /* চারিদিকে গ্যাপ দিয়ে ভাসমান করা হলো */
+    z-index: 500;
+    
+    /* গ্লাস ডিজাইন */
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2); /* চারিদিকের বর্ডার */
+    border-radius: 30px; /* চারিধার কাটা রাউন্ড */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Heading Glow Restored */
 .header h1 {
-    margin: 5px 0 0;
+    margin: 10px 0 0;
     font-family: 'Orbitron', sans-serif;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 900;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     background: linear-gradient(90deg, #fff, #38bdf8, #818cf8, #fff);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -85,73 +88,54 @@ body {
     animation: glowText 3s linear infinite;
 }
 
+@keyframes glowText { to { background-position: 200% center; } }
+
 .header .tagline {
     margin-top: 5px;
     font-family: 'Exo 2', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     color: #38bdf8;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
-@keyframes glowText { to { background-position: 200% center; } }
-
 .logo-circle { 
-    width: 70px; 
-    height: 70px; 
-    border-radius: 50%; 
-    margin: 0 auto; 
-    display: block; 
-    object-fit: cover; 
-    border: 2px solid #38bdf8; 
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); 
+    width: 70px; height: 70px; border-radius: 50%; 
+    margin: 0 auto; display: block; object-fit: cover; 
+    border: 2px solid rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); 
 }
 
-/* Home Buttons Styling */
+/* Home Buttons */
 .home-glass-btn {
     width: 100%; margin: 15px 0; padding: 20px; border-radius: 20px; cursor: pointer;
-    background: transparent; 
-    border: 2px solid rgba(255, 255, 255, 0.6); 
-    color: #fff;
-    font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
+    background: transparent; border: 2px solid rgba(255, 255, 255, 0.6); 
+    color: #fff; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 2px; text-align: center;
-    transition: 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
+    transition: 0.3s ease; position: relative; overflow: hidden; outline: none;
 }
 
-/* Super Fast Organic Ripple */
 .ripple {
-    position: absolute;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.8) 0%, transparent 70%);
-    border-radius: 50%;
-    transform: scale(0);
-    animation: stylish-ripple 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: absolute; background: radial-gradient(circle, rgba(56, 189, 248, 0.8) 0%, transparent 70%);
+    border-radius: 50%; transform: scale(0); animation: stylish-ripple 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     pointer-events: none;
 }
+@keyframes stylish-ripple { to { transform: scale(3); opacity: 0; } }
 
-@keyframes stylish-ripple {
-    to { transform: scale(3); opacity: 0; }
-}
-
-.home-glass-btn:hover {
-    border-color: #38bdf8;
-    background: rgba(56, 189, 248, 0.05);
-}
-
-/* Chapter Selection & Progress Bubble */
+/* Chapter Card Animation */
 .chapter {
     display: flex; justify-content: space-between; align-items: center;
     width: 100%; margin: 12px 0; padding: 18px 20px;
-    border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 18px;
+    border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 20px;
     cursor: pointer; color: white; font-size: 15px; font-weight: 600;
-    background: linear-gradient(135deg, #1e40af, #1d4ed8);
-    text-align: left; position: relative; overflow: hidden;
+    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px);
+    transition: 0.3s; opacity: 0; transform: translateY(20px);
 }
+.reveal { animation: revealItem 0.5s ease forwards; }
+@keyframes revealItem { to { opacity: 1; transform: translateY(0); } }
 
+/* Progress Bubble Original */
 .prog-bubble {
     position: relative; width: 55px; background: rgba(0, 0, 0, 0.4); 
     padding: 4px 0; border-radius: 8px; font-size: 11px; color: #fff; 
@@ -168,11 +152,10 @@ body {
 .top-back {
     position: absolute; left: 15px; top: 15px;
     background: rgba(239, 68, 68, 0.9); padding: 8px 16px; border-radius: 12px;
-    font-size: 12px; font-weight: bold; cursor: pointer; display: none; z-index: 999;
+    font-size: 12px; font-weight: bold; cursor: pointer; display: none; z-index: 1000;
 }
 
-.screen { display: none; padding: 40px 20px; max-width: 520px; margin: auto; animation: slideUp 0.3s ease-out; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+.screen { display: none; padding: 10px 20px 80px; max-width: 520px; margin: auto; }
 .active { display: block; }
 
 .video-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #059669, #10b981); text-align: center; }
@@ -196,7 +179,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
 <body>  
     <div id="splash"><img src="https://i.ibb.co/MkP5N4DZ/logo.jpg"></div>  
 
-    <div class="galaxy-bg"></div>
+    <div class="galaxy-bg" id="parallaxBg"></div>
     <div class="overlay"></div>
 
     <div class="header">    
@@ -207,7 +190,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
     </div>  
 
     <div id="home" class="screen active">    
-        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase; margin-bottom: 25px;">Physics Courses</h3>    
+        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase; margin-bottom: 25px;">📚 Physics Courses</h3>    
         <button class="home-glass-btn" onclick="handleButtonClick(event, 'boards')">Boards Exam</button>    
         <button class="home-glass-btn" onclick="handleButtonClick(event, 'jee')">JEE / NEET Entrance</button>    
     </div>  
@@ -235,12 +218,8 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             <div class="tab-btn active" onclick="showTab('lecture')">Lecture</div>    
             <div class="tab-btn" onclick="showTab('notes')">Notes</div>    
         </div>    
-        <div id="lectureTab">    
-            <div id="videoButtons"></div>    
-        </div>    
-        <div id="notesTab" style="display:none;">    
-            <button class="notes-btn" onclick="openPDF()">📄 Download PDF Notes</button>    
-        </div>  
+        <div id="lectureTab"><div id="videoButtons"></div></div>    
+        <div id="notesTab" style="display:none;"><button class="notes-btn" onclick="openPDF()">📄 Download PDF Notes</button></div>  
     </div>  
 
     <div id="player" class="screen">    
@@ -259,25 +238,22 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
         let progressData = JSON.parse(localStorage.getItem('eduProg')) || {};
 
         let data={
-            electro:{ title:"Electrostatics", videos:[
-                "https://www.youtube.com/embed/GI5f4-8GbOs?autoplay=1",
-                "https://www.youtube.com/embed/o4wpmE32ab4?autoplay=1",
-                "https://www.youtube.com/embed/2zVKF4t78MQ?autoplay=1",
-                "https://www.youtube.com/embed/qC2b-u4IXX0?autoplay=1"
-            ]},
-            potential:{title:"Electrostatic Potential",videos:[]},
-            current:{title:"Current Electricity",videos:[]},
-            magnetism:{title:"Magnetism",videos:[]},
-            emi:{title:"Electromagnetic Induction",videos:[]},
-            ac:{title:"Alternating Current",videos:[]},
-            optics:{title:"Optics",videos:[]},
-            dual:{title:"Dual Nature",videos:[]},
-            atoms:{title:"Atoms",videos:[]},
-            nuclei:{title:"Nuclei",videos:[]},
-            semi:{title:"Semiconductors",videos:[]}
+            electro:{ title:"Electrostatics", videos:["https://www.youtube.com/embed/GI5f4-8GbOs?autoplay=1","https://www.youtube.com/embed/o4wpmE32ab4?autoplay=1","https://www.youtube.com/embed/2zVKF4t78MQ?autoplay=1","https://www.youtube.com/embed/qC2b-u4IXX0?autoplay=1"]},
+            potential:{title:"Electrostatic Potential",videos:[]}, current:{title:"Current Electricity",videos:[]},
+            magnetism:{title:"Magnetism",videos:[]}, emi:{title:"Electromagnetic Induction",videos:[]},
+            ac:{title:"Alternating Current",videos:[]}, optics:{title:"Optics",videos:[]},
+            dual:{title:"Dual Nature",videos:[]}, atoms:{title:"Atoms",videos:[]},
+            nuclei:{title:"Nuclei",videos:[]}, semi:{title:"Semiconductors",videos:[]}
         };
 
-        // Super Fast Navigation (200ms)
+        // Parallax
+        document.addEventListener('mousemove', (e) => {
+            const bg = document.getElementById('parallaxBg');
+            const x = (window.innerWidth / 2 - e.pageX) / 35;
+            const y = (window.innerHeight / 2 - e.pageY) / 35;
+            bg.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
         function handleButtonClick(event, section) {
             const button = event.currentTarget;
             const ripple = document.createElement("span");
@@ -288,29 +264,28 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             ripple.style.top = `${event.clientY - rect.top}px`;
             ripple.classList.add("ripple");
             button.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-                openSection(section);
-            }, 200); // Super fast transition
+            setTimeout(() => { ripple.remove(); openSection(section); }, 200);
         }
-
-        function openLink(url) { window.open(url, '_blank').focus(); }
 
         function openSection(sec){
             currentSection=sec; historyStack.push("home"); hideAll();
             document.getElementById("sectionScreen").classList.add("active");
             document.querySelector(".top-back").style.display="block";
             document.getElementById("sectionTitle").innerText=sec;
+            const chapters = document.querySelectorAll('.chapter');
+            chapters.forEach((ch, index) => {
+                ch.classList.remove('reveal');
+                setTimeout(() => { ch.classList.add('reveal'); }, index * 80);
+            });
             refreshProgUI();
+            window.scrollTo(0,0);
         }
 
         function refreshProgUI(){
             Object.keys(data).forEach(key => {
                 let el = document.getElementById(key + "-prog");
                 if(el) {
-                    let val = 0;
-                    if(currentSection === "boards") { val = progressData[key] || 0; }
+                    let val = (currentSection === "boards") ? (progressData[key] || 0) : 0;
                     el.innerText = val + "%";
                     el.style.setProperty('--p-width', val + '%');
                 }
@@ -326,9 +301,8 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
                 data[ch].videos.forEach((v,i)=>{
                     container.innerHTML+=`<button class="video-btn" onclick="playVideo(${i})">${data[ch].title} - Part ${i+1}</button>`;
                 });
-            } else {
-                container.innerHTML=`<div style="text-align:center; padding:20px; opacity:0.8;"><h3>📘 Coming Soon</h3></div>`;
-            }
+            } else { container.innerHTML=`<div style="text-align:center; padding:20px; opacity:0.8;"><h3>📘 Coming Soon</h3></div>`; }
+            window.scrollTo(0,0);
         }
 
         function playVideo(i){
@@ -356,7 +330,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
             event.currentTarget.classList.add("active");
         }
-
+        function openLink(url) { window.open(url, '_blank').focus(); }
         function openPDF(){ window.open("YOUR_PDF_LINK","_blank"); }
 
         function goBack(){

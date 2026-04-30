@@ -3,6 +3,7 @@
 <meta charset="UTF-8">    
 <title>EDUFINITY - Class 12 Physics</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&family=Exo+2:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>    
 body {
@@ -37,11 +38,10 @@ body::after {
     filter: blur(80px);
 }
 
-/* --- Splash Screen Update Starts --- */
 #splash {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: #ffffff; /* ব্যাকগ্রাউন্ড সাদা করা হলো */
+    background: #ffffff;
     display: flex; align-items: center; justify-content: center;
     z-index: 10000;
     transition: 0.6s ease;
@@ -49,12 +49,10 @@ body::after {
 
 #splash img {
     width: 160px;
-    border-radius: 20px; /* লোগোটি সুন্দর দেখানোর জন্য */
-    /* mix-blend-mode সরিয়ে দেওয়া হয়েছে যাতে সাদা ব্যাকগ্রাউন্ডে লোগো পরিষ্কার দেখা যায় */
+    border-radius: 20px;
     filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.1)); 
     animation: quantumPulse 2s infinite ease-in-out;
 }
-/* --- Splash Screen Update Ends --- */
 
 @keyframes quantumPulse {
     0%, 100% { transform: scale(1); opacity: 1; }
@@ -195,32 +193,41 @@ iframe {
     font-weight: bold;
 }
 
+/* --- Floating Button Update Starts --- */
 .floating {
     position: fixed;
-    right: 15px;
-    bottom: 25px;
+    right: 20px;
+    bottom: 30px;
     display: none;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
     z-index: 50;
 }
 
 .floating div {
-    width: 110px;
-    padding: 12px;
-    border-radius: 20px;
-    text-align: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 24px;
     cursor: pointer;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
 }
 
-.whatsapp-btn { background: rgba(37, 211, 102, 0.8); }
-.instagram-btn { background: rgba(225, 48, 108, 0.8); }
-.facebook-btn { background: rgba(24, 119, 242, 0.8); }
+.floating div:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-btn { background: #25D366; }
+.instagram-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.facebook-btn { background: #1877F2; }
+/* --- Floating Button Update Ends --- */
 
 </style>  
 </head>  
@@ -278,9 +285,9 @@ iframe {
     </div>  
 
     <div id="socialLinks" class="floating">    
-        <div onclick="openLink('https://www.instagram.com/edufinity_abhijit')" class="instagram-btn">Instagram</div>    
-        <div onclick="openLink('https://chat.whatsapp.com/F8nP43r3h7y3dobqk7qTI3')" class="whatsapp-btn">WhatsApp</div>    
-        <div onclick="openLink('https://www.facebook.com/share/1P6JqRg8JE/')" class="facebook-btn">Facebook</div>    
+        <div onclick="openLink('https://www.instagram.com/edufinity_abhijit')" class="instagram-btn"><i class="fab fa-instagram"></i></div>    
+        <div onclick="openLink('https://chat.whatsapp.com/F8nP43r3h7y3dobqk7qTI3')" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></div>    
+        <div onclick="openLink('https://www.facebook.com/share/1P6JqRg8JE/')" class="facebook-btn"><i class="fab fa-facebook-f"></i></div>    
     </div>  
 
     <script>    

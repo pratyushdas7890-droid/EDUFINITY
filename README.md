@@ -37,10 +37,11 @@ body::after {
     filter: blur(80px);
 }
 
+/* --- Splash Screen Update Starts --- */
 #splash {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: #020617;
+    background: #ffffff; /* ব্যাকগ্রাউন্ড সাদা করা হলো */
     display: flex; align-items: center; justify-content: center;
     z-index: 10000;
     transition: 0.6s ease;
@@ -48,14 +49,16 @@ body::after {
 
 #splash img {
     width: 160px;
-    mix-blend-mode: screen; 
-    filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.8));
+    border-radius: 20px; /* লোগোটি সুন্দর দেখানোর জন্য */
+    /* mix-blend-mode সরিয়ে দেওয়া হয়েছে যাতে সাদা ব্যাকগ্রাউন্ডে লোগো পরিষ্কার দেখা যায় */
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.1)); 
     animation: quantumPulse 2s infinite ease-in-out;
 }
+/* --- Splash Screen Update Ends --- */
 
 @keyframes quantumPulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 50px rgba(56, 189, 248, 1)); }
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
 }
 
 .header {
@@ -353,12 +356,11 @@ iframe {
             videoFrame.src = data[currentChapter].videos[i];
             document.getElementById("videoTitle").innerText = data[currentChapter].title;
 
-            // ভিডিও পার্টে ক্লিক করলে ফুল স্ক্রিন হওয়ার জন্য নিচের কোডটি যোগ করা হয়েছে
             if (videoFrame.requestFullscreen) {
                 videoFrame.requestFullscreen();
-            } else if (videoFrame.webkitRequestFullscreen) { /* Safari */
+            } else if (videoFrame.webkitRequestFullscreen) {
                 videoFrame.webkitRequestFullscreen();
-            } else if (videoFrame.msRequestFullscreen) { /* IE11 */
+            } else if (videoFrame.msRequestFullscreen) {
                 videoFrame.msRequestFullscreen();
             }
         }
@@ -376,7 +378,6 @@ iframe {
         }
 
         function goBack(){
-            // ফুল স্ক্রিন থেকে বেরিয়ে আসার জন্য
             if (document.fullscreenElement) {
                 document.exitFullscreen();
             }

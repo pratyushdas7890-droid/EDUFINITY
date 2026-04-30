@@ -84,6 +84,16 @@ body::after {
     text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
 }
 
+.header .tagline {
+    margin-top: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    color: #38bdf8;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
 @keyframes glowText { to { background-position: 200% center; } }
 
 .logo-circle { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 15px; display: block; object-fit: cover; border: 2px solid #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
@@ -98,7 +108,6 @@ body::after {
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .active { display: block; }
 
-/* Chapter Button (Name Left, Progress Right) */
 .chapter {
     display: flex; justify-content: space-between; align-items: center;
     width: 100%; margin: 12px 0; padding: 18px 20px;
@@ -110,38 +119,22 @@ body::after {
     overflow: hidden;
 }
 
-/* Updated Progress Bubble Style */
 .prog-bubble {
-    position: relative;
-    width: 55px; /* ফিক্সড উইথ যাতে দেখতে একরকম লাগে */
-    background: rgba(0, 0, 0, 0.4); 
-    padding: 4px 0; 
-    border-radius: 8px;
-    font-size: 11px; 
-    color: #fff; 
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    overflow: hidden;
-    z-index: 1;
+    position: relative; width: 55px; background: rgba(0, 0, 0, 0.4); 
+    padding: 4px 0; border-radius: 8px; font-size: 11px; color: #fff; 
+    border: 1px solid rgba(255, 255, 255, 0.1); text-align: center;
+    overflow: hidden; z-index: 1;
 }
 
-/* সবুজ ব্যাকগ্রাউন্ড যা পার্সেন্টেজ অনুযায়ী বাড়বে */
 .prog-bubble::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%;
-    width: var(--p-width, 0%); /* ভ্যারিয়েবল দিয়ে কন্ট্রোল হবে */
-    background: rgba(16, 185, 129, 0.6); /* হালকা সবুজ আভা */
-    transition: width 0.5s ease;
-    z-index: -1;
+    content: ""; position: absolute; top: 0; left: 0; height: 100%;
+    width: var(--p-width, 0%); background: rgba(16, 185, 129, 0.7);
+    transition: width 0.5s ease; z-index: -1;
 }
 
-/* Video & Notes Original Buttons (Centered) */
 .video-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #059669, #10b981); text-align: center; }
 .notes-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #d97706, #f59e0b); text-align: center; }
 
-/* Glass Home Buttons */
 .home-glass-btn {
     width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer;
     background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px);
@@ -174,10 +167,11 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
         <div class="top-back" onclick="goBack()">Back</div>    
         <img src="https://i.ibb.co/3YPtmZMM/Screenshot.png" class="logo-circle">   
         <h1>EDUFINITY</h1>     
+        <div class="tagline">চলো এবার Physics কে Feel করা যাক</div>    
     </div>  
 
     <div id="home" class="screen active">    
-        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase;">📚 Physics Courses</h3>    
+        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase;">Physics Courses</h3>    
         <button class="home-glass-btn" onclick="openSection('boards')">Boards Exam</button>    
         <button class="home-glass-btn" onclick="openSection('jee')">JEE / NEET Entrance</button>    
     </div>  
@@ -209,7 +203,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             <div id="videoButtons"></div>    
         </div>    
         <div id="notesTab" style="display:none;">    
-            <button class="notes-btn" onclick="openPDF()">📄 Download PDF Notes</button>    
+            <button class="notes-btn" onclick="openPDF()">Download PDF Notes</button>    
         </div>  
     </div>  
 
@@ -257,14 +251,16 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             refreshProgUI();
         }
 
-        // Updated Function to handle visual fill
         function refreshProgUI(){
             Object.keys(data).forEach(key => {
                 let el = document.getElementById(key + "-prog");
                 if(el) {
-                    let val = progressData[key] || 0;
+                    let val = 0;
+                    if(currentSection === "boards") {
+                        val = progressData[key] || 0;
+                    }
                     el.innerText = val + "%";
-                    el.style.setProperty('--p-width', val + '%'); // ব্যাকগ্রাউন্ড ফিল আপডেট
+                    el.style.setProperty('--p-width', val + '%');
                 }
             });
         }
@@ -274,25 +270,34 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             document.getElementById("chapterScreen").classList.add("active");
             document.getElementById("chapterTitle").innerText=data[ch].title;
             let container=document.getElementById("videoButtons"); container.innerHTML="";
-            if(currentSection==="jee" && data[ch].videos.length === 0){
-                container.innerHTML=`<div style="text-align:center; padding:20px; opacity:0.8;"><h3>📘 Coming Soon</h3></div>`; return;    
-            }    
-            data[ch].videos.forEach((v,i)=>{
-                container.innerHTML+=`<button class="video-btn" onclick="playVideo(${i})">${data[ch].title} - Part ${i+1}</button>`;
-            });
+
+            if(currentSection==="boards" && ch==="electro") {
+                data[ch].videos.forEach((v,i)=>{
+                    container.innerHTML+=`<button class="video-btn" onclick="playVideo(${i})">${data[ch].title} - Part ${i+1}</button>`;
+                });
+            } else {
+                container.innerHTML=`<div style="text-align:center; padding:20px; opacity:0.8;"><h3>📘 Coming Soon</h3></div>`;
+            }
         }
 
         function playVideo(i){
-            let total = data[currentChapter].videos.length;
-            let current = (progressData[currentChapter] || 0);
-            if(current < 100) {
-                progressData[currentChapter] = Math.min(100, current + Math.round(100/total));
-                localStorage.setItem('eduProg', JSON.stringify(progressData));
+            if(currentSection === "boards") {
+                let total = data[currentChapter].videos.length;
+                let current = (progressData[currentChapter] || 0);
+                if(current < 100) {
+                    progressData[currentChapter] = Math.min(100, current + Math.round(100/total));
+                    localStorage.setItem('eduProg', JSON.stringify(progressData));
+                }
             }
             historyStack.push("chapter"); hideAll();
-            document.getElementById("player").classList.add("active");
-            document.getElementById("videoFrame").src = data[currentChapter].videos[i];
+            let playerDiv = document.getElementById("player");
+            let videoFrame = document.getElementById("videoFrame");
+            playerDiv.classList.add("active");
+            videoFrame.src = data[currentChapter].videos[i];
             document.getElementById("videoTitle").innerText = data[currentChapter].title;
+
+            if (videoFrame.requestFullscreen) { videoFrame.requestFullscreen(); }
+            else if (videoFrame.webkitRequestFullscreen) { videoFrame.webkitRequestFullscreen(); }
         }
 
         function showTab(tab){

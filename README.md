@@ -12,30 +12,30 @@ body {
     color: white;
     overflow-x: hidden;
     background-color: #020617;
-    background-image: 
-        linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: center;
     position: relative;
+    min-height: 100vh;
 }
 
-body::before {
-    content: "";
+/* Cinemaic Galaxy Background Effect */
+.galaxy-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
+    background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2022&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    animation: galaxyZoom 40s linear infinite alternate;
+}
+
+.overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
-    background: radial-gradient(circle at 50% 50%, transparent 20%, #020617 90%);
+    background: rgba(2, 6, 23, 0.4); /* ওভারলে কিছুটা কমানো হলো স্বচ্ছতা বাড়াতে */
 }
 
-body::after {
-    content: "";
-    position: fixed;
-    top: -10%; left: -10%; width: 120%; height: 120%;
-    z-index: -2;
-    background: radial-gradient(circle at 20% 30%, rgba(30, 58, 138, 0.4), transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(7, 89, 133, 0.3), transparent 50%);
-    filter: blur(80px);
+@keyframes galaxyZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
 }
 
 #splash {
@@ -64,7 +64,7 @@ body::after {
     padding: 30px 10px;
     position: sticky;
     top: 0;
-    background: rgba(2, 6, 23, 0.85);
+    background: rgba(2, 6, 23, 0.8);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(56, 189, 248, 0.3);
     z-index: 100;
@@ -81,7 +81,6 @@ body::after {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glowText 3s linear infinite;
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
 }
 
 .header .tagline {
@@ -108,15 +107,14 @@ body::after {
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .active { display: block; }
 
+/* Chapter Selection Style */
 .chapter {
     display: flex; justify-content: space-between; align-items: center;
     width: 100%; margin: 12px 0; padding: 18px 20px;
     border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 18px;
     cursor: pointer; color: white; font-size: 15px; font-weight: 600;
     transition: 0.3s; background: linear-gradient(135deg, #1e40af, #1d4ed8);
-    text-align: left;
-    position: relative;
-    overflow: hidden;
+    text-align: left; position: relative; overflow: hidden;
 }
 
 .prog-bubble {
@@ -132,18 +130,28 @@ body::after {
     transition: width 0.5s ease; z-index: -1;
 }
 
-.video-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #059669, #10b981); text-align: center; }
-.notes-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #d97706, #f59e0b); text-align: center; }
-
+/* Home Page Pure Transparent Buttons (No Blur) */
 .home-glass-btn {
-    width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer;
-    background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15); color: #fff;
-    font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 1.2px; text-align: center;
+    width: 100%; margin: 15px 0; padding: 20px; border-radius: 20px; cursor: pointer;
+    background: transparent; /* ব্যাকগ্রাউন্ড সম্পূর্ণ সচ্ছ */
+    backdrop-filter: none; /* ব্লার সরিয়ে দেওয়া হলো */
+    -webkit-backdrop-filter: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.6); /* বর্ডার আরেকটু স্পষ্ট করা হলো */
+    color: #fff;
+    font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 2px; text-align: center;
+    transition: 0.3s ease;
 }
 
-button:hover { box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); transform: translateY(-2px); }
+.home-glass-btn:hover {
+    background: rgba(56, 189, 248, 0.15); /* হোভার করলে হালকা নীল আভা */
+    border-color: #38bdf8;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    transform: scale(1.02);
+}
+
+.video-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #059669, #10b981); text-align: center; }
+.notes-btn { width: 100%; margin: 12px 0; padding: 18px; border-radius: 18px; cursor: pointer; color: white; font-size: 16px; font-weight: 600; border: none; background: linear-gradient(135deg, #d97706, #f59e0b); text-align: center; }
 
 iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border: 1px solid rgba(56, 189, 248, 0.3); }
 
@@ -163,6 +171,9 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
 <body>  
     <div id="splash"><img src="https://i.ibb.co/MkP5N4DZ/logo.jpg"></div>  
 
+    <div class="galaxy-bg"></div>
+    <div class="overlay"></div>
+
     <div class="header">    
         <div class="top-back" onclick="goBack()">Back</div>    
         <img src="https://i.ibb.co/3YPtmZMM/Screenshot.png" class="logo-circle">   
@@ -171,7 +182,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
     </div>  
 
     <div id="home" class="screen active">    
-        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase;">Physics Courses</h3>    
+        <h3 style="text-align:center; color:#38bdf8; font-family:'Exo 2'; text-transform:uppercase; margin-bottom: 25px;">📚 Physics Courses</h3>    
         <button class="home-glass-btn" onclick="openSection('boards')">Boards Exam</button>    
         <button class="home-glass-btn" onclick="openSection('jee')">JEE / NEET Entrance</button>    
     </div>  
@@ -203,7 +214,7 @@ iframe { width:100%; height:230px; border-radius:18px; margin-top: 15px; border:
             <div id="videoButtons"></div>    
         </div>    
         <div id="notesTab" style="display:none;">    
-            <button class="notes-btn" onclick="openPDF()">Download PDF Notes</button>    
+            <button class="notes-btn" onclick="openPDF()">📄 Download PDF Notes</button>    
         </div>  
     </div>  
 

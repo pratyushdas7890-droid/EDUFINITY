@@ -23,13 +23,32 @@ body { margin: 0; font-family: 'Poppins', sans-serif; color: white; overflow-x: 
 .header h1 { margin: 10px 0 0; font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 900; letter-spacing: 5px; background: linear-gradient(90deg, #fff, #38bdf8, #818cf8, #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: glowText 3s linear infinite; }
 @keyframes glowText { to { background-position: 200% center; } }
 
-/* Class Tabs - Orange */
-.class-tabs { display: flex; gap: 10px; margin: 20px 15px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-.c-tab { flex: 1; padding: 15px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s; font-weight: bold; color: white; opacity: 0.6; }
-.c-tab.active { background: #f59e0b; color: #020617; opacity: 1; box-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
+/* STYLISH HAMBURGER MENU */
+.menu-btn { 
+    position: absolute; 
+    right: 25px; 
+    top: 30px; 
+    width: 28px; 
+    height: 20px; 
+    cursor: pointer; 
+    z-index: 2500; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+}
+.menu-btn span { 
+    display: block; 
+    height: 3px; 
+    width: 100%; 
+    background: linear-gradient(90deg, #38bdf8, #818cf8); 
+    border-radius: 10px; 
+    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6); 
+}
+.menu-btn.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-20px); }
+.menu-btn.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
-/* Dashboard Menu Style */
-.menu-btn { position: absolute; right: 25px; top: 20px; font-size: 22px; color: #fff; cursor: pointer; z-index: 600; }
+/* Side Nav */
 .side-nav { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: rgba(2, 6, 23, 0.98); backdrop-filter: blur(25px); border-left: 1px solid rgba(56, 189, 248, 0.3); z-index: 2000; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 40px 20px; box-sizing: border-box; }
 .side-nav.open { right: 0; }
 .menu-title { font-family: 'Orbitron'; font-size: 16px; color: #38bdf8; margin-bottom: 30px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 10px; letter-spacing: 2px; }
@@ -39,6 +58,11 @@ body { margin: 0; font-family: 'Poppins', sans-serif; color: white; overflow-x: 
 
 .sub-menu { max-height: 0; overflow: hidden; transition: 0.4s ease-out; padding-left: 45px; }
 .sub-menu.active { max-height: 120px; margin-top: 5px; }
+
+/* Class Tabs - Orange */
+.class-tabs { display: flex; gap: 10px; margin: 20px 15px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+.c-tab { flex: 1; padding: 15px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s; font-weight: bold; color: white; opacity: 0.6; }
+.c-tab.active { background: #f59e0b; color: #020617; opacity: 1; box-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
 
 /* Chapter Cards */
 .screen { display: none; padding: 10px 10px 100px; max-width: 520px; margin: auto; }
@@ -77,7 +101,13 @@ iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 23
 
     <div class="header">    
         <div class="top-back" onclick="goBack()">Back</div>    
-        <div class="menu-btn" onclick="toggleNav()"><i class="fas fa-ellipsis-v"></i></div>
+        
+        <div class="menu-btn" id="menuBtn" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <img src="https://i.ibb.co/3YPtmZMM/Screenshot.png" class="logo-circle">   
         <h1>EDUFINITY</h1>     
         <div class="tagline">চলো এবার Physics কে Feel করা যাক</div>    
@@ -174,7 +204,12 @@ iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 23
             document.getElementById('courseHeading').innerText = "COURSE FOR " + c;
         }
 
-        function toggleNav() { document.getElementById("sideNav").classList.toggle("open"); }
+        // Updated toggleNav for animation
+        function toggleNav() { 
+            document.getElementById("sideNav").classList.toggle("open"); 
+            document.getElementById("menuBtn").classList.toggle("open");
+        }
+
         function toggleDoubt() {
             const sub = document.getElementById("doubtSub");
             const arrow = document.getElementById("arrow");

@@ -23,97 +23,50 @@ body { margin: 0; font-family: 'Poppins', sans-serif; color: white; overflow-x: 
 .header h1 { margin: 10px 0 0; font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 900; letter-spacing: 5px; background: linear-gradient(90deg, #fff, #38bdf8, #818cf8, #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: glowText 3s linear infinite; }
 @keyframes glowText { to { background-position: 200% center; } }
 
-/* STYLISH HAMBURGER MENU */
-.menu-btn { 
-    position: absolute; 
-    right: 25px; 
-    top: 30px; 
-    width: 28px; 
-    height: 20px; 
-    cursor: pointer; 
-    z-index: 2500; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
-}
-.menu-btn span { 
-    display: block; 
-    height: 3px; 
-    width: 100%; 
-    background: linear-gradient(90deg, #38bdf8, #818cf8); 
-    border-radius: 10px; 
-    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6); 
-}
+/* Menu Button */
+.menu-btn { position: absolute; right: 25px; top: 30px; width: 28px; height: 20px; cursor: pointer; z-index: 2500; display: flex; flex-direction: column; justify-content: space-between; }
+.menu-btn span { display: block; height: 3px; width: 100%; background: linear-gradient(90deg, #38bdf8, #818cf8); border-radius: 10px; transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6); }
 .menu-btn.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
 .menu-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-20px); }
 .menu-btn.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
-/* Side Nav - Stylish Slide Animation */
-.side-nav { 
-    position: fixed; 
-    top: 0; 
-    right: -300px; 
-    width: 280px; 
-    height: 100%; 
-    background: rgba(2, 6, 23, 0.95); 
-    backdrop-filter: blur(25px); 
-    border-left: 1px solid rgba(56, 189, 248, 0.3); 
-    z-index: 2000; 
-    transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); 
-    padding: 30px 20px; 
-    box-sizing: border-box; 
-    overflow-y: auto;
-    opacity: 0;
-}
+/* Side Nav */
+.side-nav { position: fixed; top: 0; right: -300px; width: 280px; height: 100%; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(25px); border-left: 1px solid rgba(56, 189, 248, 0.3); z-index: 2000; transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1); padding: 30px 20px; box-sizing: border-box; overflow-y: auto; opacity: 0; }
 .side-nav.open { right: 0; opacity: 1; box-shadow: -15px 0 35px rgba(0,0,0,0.8); }
 
-.menu-header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    margin-bottom: 30px; 
-    border-bottom: 1px solid rgba(56, 189, 248, 0.2); 
-    padding-bottom: 15px; 
-}
+.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 15px; }
 .menu-title { font-family: 'Orbitron'; font-size: 16px; color: #38bdf8; letter-spacing: 2px; margin: 0; }
 .close-nav { color: #ef4444; font-size: 22px; cursor: pointer; transition: 0.3s; }
-.close-nav:hover { transform: rotate(90deg); color: #fff; }
 
-.nav-item { display: flex; align-items: center; gap: 15px; padding: 15px; margin: 10px 0; border-radius: 15px; background: rgba(255,255,255,0.05); cursor: pointer; transition: 0.3s; }
+/* XP Box */
+.xp-box { background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1)); padding: 15px; border-radius: 15px; border: 1px solid rgba(56, 189, 248, 0.4); display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.xp-text { font-family: 'Orbitron'; color: #38bdf8; font-size: 11px; letter-spacing: 1px; }
+.xp-value { color: #fff; font-size: 18px; font-weight: 900; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+
+.nav-item { display: flex; align-items: center; gap: 15px; padding: 15px; margin: 8px 0; border-radius: 15px; background: rgba(255,255,255,0.03); cursor: pointer; transition: 0.3s; }
 .nav-item:hover { background: rgba(56, 189, 248, 0.1); transform: translateX(5px); }
 
 .sub-menu { max-height: 0; overflow: hidden; transition: 0.4s ease-out; padding-left: 20px; }
 .sub-menu.active { max-height: 300px; margin-top: 5px; }
+.sub-link { display: flex; align-items: center; gap: 12px; padding: 10px; margin: 5px 0; border-radius: 10px; background: rgba(255,255,255,0.02); font-size: 14px; color: #cbd5e1; }
 
-/* Social Icons in Menu */
-.social-link { display: flex; align-items: center; gap: 15px; padding: 12px; margin: 5px 0; border-radius: 10px; background: rgba(255,255,255,0.03); transition: 0.3s; font-size: 14px; }
-.social-link:hover { background: rgba(255,255,255,0.08); }
-.fa-whatsapp { color: #25D366; }
-.fa-instagram { color: #E4405F; }
-.fa-facebook { color: #1877F2; }
-
-/* Class Tabs - Orange */
-.class-tabs { display: flex; gap: 10px; margin: 20px 15px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-.c-tab { flex: 1; padding: 15px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s; font-weight: bold; color: white; opacity: 0.6; }
-.c-tab.active { background: #f59e0b; color: #020617; opacity: 1; box-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
-
-/* Chapter Cards */
+/* Screen Styles */
 .screen { display: none; padding: 10px 10px 100px; max-width: 520px; margin: auto; }
 .screen.active { display: block; animation: screenReveal 0.4s ease; }
 @keyframes screenReveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-#chapterList { padding: 0 10px; }
-.chapter { display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 15px 0; padding: 18px 20px; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 20px; cursor: pointer; color: white; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px); box-sizing: border-box; }
+.class-tabs { display: flex; gap: 10px; margin: 20px 15px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+.c-tab { flex: 1; padding: 15px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s; font-weight: bold; color: white; opacity: 0.6; }
+.c-tab.active { background: #f59e0b; color: #020617; opacity: 1; box-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
 
+.chapter { display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 15px 0; padding: 18px 20px; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 20px; cursor: pointer; color: white; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px); box-sizing: border-box; }
 .prog-bubble { position: relative; width: 55px; background: rgba(0, 0, 0, 0.4); padding: 4px 0; border-radius: 8px; font-size: 11px; text-align: center; overflow: hidden; z-index: 1; }
 .prog-bubble::before { content: ""; position: absolute; top: 0; left: 0; height: 100%; width: var(--p-width, 0%); background: #10b981; opacity: 0.8; transition: 0.5s; z-index: -1; }
 
-/* Tabs */
 .tabs { display: flex; gap: 10px; margin: 0 15px 20px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.2); }
 .tab-btn { flex: 1; padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; font-weight: bold; transition: 0.3s; }
 .tab-btn.active { background: #38bdf8; color: #020617; }
 
-/* Buttons & Elements */
 .home-glass-btn { width: calc(100% - 20px); margin: 15px auto; display: block; padding: 20px; border-radius: 20px; background: transparent; border: 2px solid rgba(255,255,255,0.6); color: white; font-weight: bold; cursor: pointer; text-transform: uppercase; }
 .video-btn { width: calc(100% - 20px); margin: 10px auto; display: block; padding: 18px; border-radius: 18px; cursor: pointer; color: white; border: none; font-weight: bold; background: linear-gradient(135deg, #059669, #10b981); }
 iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 230px; border-radius: 18px; border: 1px solid #38bdf8; }
@@ -141,6 +94,11 @@ iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 23
             <h2 class="menu-title">DASHBOARD</h2>
             <i class="fas fa-times-circle close-nav" onclick="toggleNav()"></i>
         </div>
+
+        <div class="xp-box">
+            <span class="xp-text"><i class="fas fa-bolt"></i> TOTAL XP</span>
+            <span class="xp-value" id="xpCounter">0</span>
+        </div>
         
         <div class="nav-item" onclick="toggleSubMenu('doubtSub', 'arrow1')">
             <i class="fas fa-comments" style="color:#38bdf8;"></i><span>Doubt Community</span>
@@ -156,15 +114,9 @@ iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 23
             <i class="fas fa-chevron-right" id="arrow2" style="margin-left:auto; font-size:12px; transition:0.3s;"></i>
         </div>
         <div id="socialSub" class="sub-menu">
-            <div class="social-link" onclick="window.open('https://chat.whatsapp.com/F8nP43r3h7y3dobqk7qTI3')">
-                <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
-            </div>
-            <div class="social-link" onclick="window.open('https://www.instagram.com/edufinity_abhijit')">
-                <i class="fab fa-instagram"></i><span>Instagram</span>
-            </div>
-            <div class="social-link" onclick="window.open('https://www.facebook.com/share/1P6JqRg8JE/')">
-                <i class="fab fa-facebook"></i><span>Facebook</span>
-            </div>
+            <div class="sub-link" onclick="window.open('https://chat.whatsapp.com/F8nP43r3h7y3dobqk7qTI3')"><i class="fab fa-whatsapp" style="color:#25D366;"></i>WhatsApp</div>
+            <div class="sub-link" onclick="window.open('https://www.instagram.com/edufinity_abhijit')"><i class="fab fa-instagram" style="color:#E4405F;"></i>Instagram</div>
+            <div class="sub-link" onclick="window.open('https://www.facebook.com/share/1P6JqRg8JE/')"><i class="fab fa-facebook" style="color:#1877F2;"></i>Facebook</div>
         </div>
 
         <div class="nav-item" onclick="window.open('https://youtube.com/@edufinity_abhijit')">
@@ -216,6 +168,10 @@ iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 23
         let currentClass = "12";
         let historyStack = [];
         let progress = JSON.parse(localStorage.getItem('eduProg')) || {};
+        
+        // XP System Variables
+        let totalXP = parseInt(localStorage.getItem('userXP')) || 0;
+        let xpInterval = null;
 
         const chapters = {
             "12": ["Electrostatics", "Electrostatic Potential", "Current Electricity", "Magnetism", "EMI", "Alternating Current", "Optics", "Dual Nature", "Atoms", "Nuclei", "Semiconductors"],
@@ -230,6 +186,8 @@ iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 23
                 "https://www.youtube.com/embed/qC2b-u4IXX0"
             ]
         };
+
+        document.getElementById('xpCounter').innerText = totalXP;
 
         function switchClass(c) {
             currentClass = c;
@@ -284,7 +242,12 @@ iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 23
             document.getElementById("player").classList.add("active");
             document.getElementById("vTitle").innerText = ch + " Part " + part;
             frame.src = url + "?autoplay=1";
+            
             if (frame.requestFullscreen) frame.requestFullscreen();
+            
+            // Start XP Counter: 1 point per 60 seconds (1 minute)
+            startXP();
+
             let uniqueKey = currentClass + sec + ch;
             let totalVideos = (boardVideos[ch]) ? boardVideos[ch].length : 1;
             let currentP = progress[uniqueKey] || 0;
@@ -292,7 +255,30 @@ iframe { width: calc(100% - 20px); margin: 15px auto; display: block; height: 23
             localStorage.setItem('eduProg', JSON.stringify(progress));
         }
 
+        // XP Logic Updated: 1 XP per 60000ms (1 minute)
+        function startXP() {
+            stopXP(); 
+            xpInterval = setInterval(() => {
+                // শুধু ভিডিও প্লেয়ার স্ক্রিন অ্যাক্টিভ থাকলেই পয়েন্ট বাড়বে
+                if(document.getElementById("player").classList.contains("active")) {
+                    totalXP += 1;
+                    document.getElementById('xpCounter').innerText = totalXP;
+                    localStorage.setItem('userXP', totalXP);
+                } else {
+                    stopXP();
+                }
+            }, 60000); // ৬০ সেকেন্ড
+        }
+
+        function stopXP() {
+            if(xpInterval) {
+                clearInterval(xpInterval);
+                xpInterval = null;
+            }
+        }
+
         function goBack() {
+            stopXP(); 
             let last = historyStack.pop(); hideAll();
             document.getElementById("vFrame").src = "";
             if(last === "chapter") document.getElementById("chapterScreen").classList.add("active");
